@@ -7,7 +7,7 @@
     "start": "tsx src/index.ts",
     "dev": "tsx watch src/index.ts",
     "build": "tsup src",
-    "prod": "node dist/index.js",
+    "prod": "yarn build && node dist/index.js",
     "test": "vitest --coverage"
   },
   "dependencies": {
