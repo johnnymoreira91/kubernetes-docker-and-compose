@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-node-deployment
+spec:
+  selector:
+    matchLabels:
+      app: node-server
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: node-server
+    spec:
+      containers:
+        - name: node-server
+          image: node_server
+          ports:
+            - containerPort: 3001
+          imagePullPolicy: Never # Image should not be pulled
+          env:
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: back-envs
+                  key: port
